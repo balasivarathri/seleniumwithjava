@@ -1,17 +1,16 @@
 package org.qa.processor;
 
 import lombok.extern.slf4j.Slf4j;
+import org.qa.TestBase;
 import org.qa.report.ReportHelper;
 import org.qa.supporting.FeatureOverwrite;
 import org.qa.util.CoreDateTime;
-
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
 @Slf4j
-public class Processor {
+public class Processor extends TestBase {
 
     private static final String startDateTime = CoreDateTime.getTimeStamp("dd-MM-yyyy_hh-mm-ss");
     public static String requestId="";
@@ -27,19 +26,7 @@ public class Processor {
 
 
     public static void setTeamFeatureDirectory() throws IOException {
-        prop = new Properties();
-        FileInputStream fs = new FileInputStream("src/main/java/config/config.properties");
-        prop.load(fs);
-        String var0 = prop.getProperty("team").toLowerCase();
-        byte var1 = -1;
-        if (var0.hashCode() == 3016322){
-            if (var0.equals("baps")){
-                var1 = 0;
-            }
-        }
-        if (var1 == 0){
             teamFeatureDirectory = prop.getProperty("featureFilePath").toLowerCase();
-        }
     }
 
     public static void overrideFeature() {
