@@ -28,6 +28,7 @@ pipeline
 				catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
 					git 'https://github.com/balasivarathri/seleniumwithjava.git'
                     bat "mvn clean install"
+                    echo("deploy to PROD")
                 }
             }
         }
